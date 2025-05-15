@@ -1,0 +1,12 @@
+@use '../../scss/base/variables' as v;
+@use '../../scss/base/mixins' as m;
+
+.header {
+    background-color: v.$bg-white;
+    position: relative;
+    &__flex {
+        @include m.flex(row, 0);
+        justify-content: space-between;
+        align-items: center;
+    }
+}

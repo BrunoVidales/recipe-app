@@ -1,0 +1,33 @@
+@use '../../scss/base/variables' as v;
+@use '../../scss/base/mixins' as m;
+@use 'sass:color';
+
+.card {
+    background-color: v.$bg-white;
+    width: 34rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 1rem;
+    flex-shrink: 0;
+    &__info {
+        padding: 2rem 1rem;
+        @include m.flex(column, .5rem);
+    }
+
+    &__buttonLink {
+        margin-top: 1rem;
+        align-self: center;
+        background-color: v.$secondary;
+        border-radius: 1rem;
+        width: 25rem;
+        height: 4rem;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 800;
+        transition: background-color .3s;
+        display: grid;
+        place-items: center;
+        &:hover {
+            background-color: color.scale(v.$secondary, $lightness: -10%);
+        }
+    }
+}

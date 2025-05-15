@@ -1,0 +1,27 @@
+@use '../../scss/base/variables' as v;
+@use '../../scss/base/mixins' as m;
+@use 'sass:color';
+
+
+.details {
+    &__nutrionalInfo {
+        margin-bottom: 2.5rem;
+        @include m.tablet-1 { 
+            @include m.flex(row, 5rem);
+            
+        }
+    }
+
+    &__img {
+        width: 100%;
+        img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+    }
+
+    &__ingredietns {
+        margin-bottom: 2.5rem;
+        @include m.flex(column, 1.5rem);
+    }
+}

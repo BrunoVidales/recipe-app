@@ -1,0 +1,70 @@
+@use 'variables' as v;
+
+// Media Queries
+@mixin mobile-1 {
+    @media(min-width: v.$mobile-1) {
+        @content;
+    }
+}
+
+@mixin mobile-2 {
+    @media(min-width: v.$mobile-2) {
+        @content;
+    }
+}
+
+@mixin tablet-1 {
+    @media(min-width: v.$tablet-1) {
+        @content;
+    }
+}
+
+@mixin tablet-2 {
+    @media(min-width: v.$tablet-2) {
+        @content;
+    }
+}
+
+@mixin desktop-1 {
+    @media(min-width: v.$desktop-1) {
+        @content;
+    }
+}
+
+@mixin desktop-2 {
+    @media(min-width: v.$desktop-2) {
+        @content;
+    }
+}
+
+@mixin desktop-3 {
+    @media(min-width: v.$desktop-3) {
+        @content;
+    }
+}
+
+@mixin desktop-4 {
+    @media(min-width: v.$desktop-4) {
+        @content;
+    }
+}
+
+@mixin tv {
+    @media(min-width: v.$tv) {
+        @content;
+    }
+}
+
+// Grid
+@mixin grid($columns, $gap) {
+    display: grid;
+    gap: $gap;
+    grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin flex($direction, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+}
+ 

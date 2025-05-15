@@ -1,0 +1,16 @@
+@use '../../scss/base/variables' as v;
+@use '../../scss/base/mixins' as m;
+
+.footer {
+    width: 100%;
+    background-color: v.$bg-white;
+    &__copyright {
+        text-align: center;
+        font-weight: 800;
+    }
+}
+
+/* .footerFavorites {
+    position: absolute;
+    bottom: 0;
+} */

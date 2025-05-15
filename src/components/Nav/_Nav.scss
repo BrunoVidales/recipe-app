@@ -1,0 +1,41 @@
+@use '../../scss/base/variables' as v;
+@use '../../scss/base/mixins' as m;
+
+.nav {
+    width: 100%;
+    padding: 1rem 0; 
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    background-color: v.$bg-white;
+    z-index: 1;
+    @include m.flex(row, 0);
+    justify-content: space-evenly;
+
+    @include m.tablet-2 { 
+        width: auto;
+        position: relative;
+        @include m.flex(row, 6rem);
+        justify-content: flex-end;
+    }
+
+    &__link,
+    &__theme {
+        font-size: 2rem;
+        @include m.flex(row, 1rem);
+        align-items: center;
+
+        @include m.tablet-2 { 
+            font-size: 3rem;
+        }
+    }
+
+    &__icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        @include m.tablet-2 { 
+            width: 2rem;
+            height: 2rem;
+        }       
+    }
+}
