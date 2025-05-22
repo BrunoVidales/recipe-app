@@ -12,11 +12,18 @@
     @include m.flex(column, 1.5rem);
 
     &__ingredients {
-        p {
+        .textValid {
             font-size: 1.2rem;
             color: #99A6B7;   
         }
+        .error {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #ff0303;
     }
+    }
+
+    
 
 
     &__field {

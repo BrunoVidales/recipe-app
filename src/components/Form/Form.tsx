@@ -1,4 +1,5 @@
 import { dietsList } from '../../data';
+import useFormValidation from '../../hooks/useFormValidation';
 import useDietCheckbox from '../../hooks/useDietCheckbox';
 import useIngredientInput from '../../hooks/useIngredientInput';
 
@@ -6,15 +7,14 @@ import './Form.scss';
 
 export const Form = () => {
 
-  const { ingredients, handleChangeInput } = useIngredientInput();
+  const { ingredients, setIngredients, handleChangeInput } = useIngredientInput();
   const { selectDiets, handleChangeCheckbox } = useDietCheckbox();
+  const { handleSubmit, errorMessage } = useFormValidation({ingredients, setIngredients});
   
-  
-
   return (
     <section className='spacing'>
         <h2>What do you want to cook today?</h2>
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
             <div className='form__ingredients'>
                 <input 
                   className='form__field' 
@@ -24,7 +24,7 @@ export const Form = () => {
                   value={ingredients.ingredient}
                   onChange={handleChangeInput}  
                 />
-                <p>Enter ingredients separated by commas (example: tomato, onion, garlic)</p>
+                <p className={errorMessage.isValidate ? 'textValid' : 'error'}>{errorMessage.text}</p>
             </div>
 
             <div>

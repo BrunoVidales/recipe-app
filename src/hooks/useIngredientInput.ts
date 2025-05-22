@@ -15,6 +15,7 @@ const useIngredientInput = () => {
 
     return {
         ingredients,
+        setIngredients,
         handleChangeInput
     };
 };
