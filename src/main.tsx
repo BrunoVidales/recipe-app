@@ -4,7 +4,8 @@ import { AppRouter } from './router'
 import './scss/app.scss';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <AppRouter />
-  </StrictMode>,
+ /*  <StrictMode>
+    
+  </StrictMode>, */
+  <AppRouter />
 )

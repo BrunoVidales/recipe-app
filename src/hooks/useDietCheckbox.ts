@@ -2,7 +2,7 @@ import { useState } from "react";
 import { dietsList } from "../data";
 import { DietsOption, DietsOptions } from "../types";
 
-const initialBuild = () => {
+export const initialBuild = () => {
     return dietsList.reduce((acc, diet) => {
         acc[diet] = { // Asignación dinamica
             checked: false,
@@ -10,7 +10,6 @@ const initialBuild = () => {
         }
         return acc
     } , {} as DietsOptions); // Aserción de tipos  
-
 };
  
 const useDietCheckbox = () => {
@@ -47,6 +46,7 @@ const useDietCheckbox = () => {
 
     return {
         selectDiets,
+        setSelectDiets,
         handleChangeCheckbox
     };
 };

@@ -6,12 +6,14 @@ const useIngredientInput = () => {
         ingredient: ''
     });
 
+
     const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setIngredients({
-      ...ingredients,
-      [e.target.name]: e.target.value
-    })
-  };
+        setIngredients({
+        ...ingredients,
+        [e.target.name]: e.target.value
+        });
+    };
+
 
     return {
         ingredients,

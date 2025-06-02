@@ -8,9 +8,9 @@ import './Form.scss';
 export const Form = () => {
 
   const { ingredients, setIngredients, handleChangeInput } = useIngredientInput();
-  const { selectDiets, handleChangeCheckbox } = useDietCheckbox();
-  const { handleSubmit, errorMessage } = useFormValidation({ingredients, setIngredients});
-  
+  const { selectDiets, setSelectDiets, handleChangeCheckbox } = useDietCheckbox();
+  const { handleSubmit, errorMessage } = useFormValidation({ingredients, setIngredients, selectDiets, setSelectDiets});
+
   return (
     <section className='spacing'>
         <h2>What do you want to cook today?</h2>

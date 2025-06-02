@@ -1,4 +1,10 @@
+import { useAppStore } from "../stores/useAppStore";
 import { MouseEvent, useState, Dispatch, SetStateAction } from "react";
+import { DietsOptions, DietsState, Filters } from "../types";
+import cleanFormData from "../utils/cleanFormData";
+import { initialBuild } from "./useDietCheckbox";
+
+
 const validate = {
     text: 'Enter ingredients separated by commas (example: tomato,onion,garlic)',
     isValidate: true
@@ -10,20 +16,25 @@ type IngredientsType = {
 
 type UseFormValidationProps = {
     ingredients: IngredientsType;
-    setIngredients: Dispatch<SetStateAction<IngredientsType>>
+    setIngredients: Dispatch<SetStateAction<IngredientsType>>;
+    selectDiets: DietsOptions;
+    setSelectDiets: Dispatch<React.SetStateAction<DietsOptions>>
 };
 
-const useFormValidation = ({ingredients, setIngredients}: UseFormValidationProps) => {
+const useFormValidation = ({ingredients, setIngredients, selectDiets, setSelectDiets}: UseFormValidationProps) => {
+
+
+    const searchRecipes = useAppStore(state => state.searchRecipes);
 
     const { ingredient } = ingredients;
 
-
     // Manejo de errores personalizado
     const [errorMessage, setErrorMessage] = useState(validate);
-    
-    const inputValidation = () => {
 
-        // Obtengo el valor y limpio de espacios
+    
+    // Función para validar el input
+    const inputValidation = () => {
+        // Obtengo el valor y limpio espacios
         let inputText = ingredient.trim().toLowerCase();
 
         // Validacion de input vacio
@@ -46,8 +57,8 @@ const useFormValidation = ({ingredients, setIngredients}: UseFormValidationProps
             return;
         };
 
-        let inputArray = inputText.split(',').map(e => e.trim()).filter(e => e !== '');
-        console.log(inputArray)
+        let inputArray = inputText.split(',').map(e => encodeURIComponent(e.trim())).filter(e => e !== '');
+        
         if(inputArray.length === 0) {
             setErrorMessage({
                 text: "Please enter at least one valid ingredient",
@@ -58,19 +69,51 @@ const useFormValidation = ({ingredients, setIngredients}: UseFormValidationProps
 
         setErrorMessage(validate);
 
-        inputText = inputArray.join(',');
-        console.log(inputText)
-    }
+        const result = inputArray.join(',');   
+        return result;
+    };
+    
+
+    // Filtrar tipo de dieta
+    const getSelectedDiets = () => {
+        const result = Object.keys(
+            Object.fromEntries(
+                Object.entries(selectDiets).filter(([_, value]) => value.checked)
+            )
+        ).join(',');
+        return result;
+    };
 
     const handleSubmit = (e: MouseEvent<HTMLFormElement>) => {
         e.preventDefault();
-        inputValidation()
+        const includeIngredients = inputValidation();
+        const diet = getSelectedDiets();
+
+        if(!includeIngredients) return; 
+
+        // Setear el estado ingredients
+        setIngredients({
+            ingredient: ''
+        });
+
+        // Setear el estado de selectDiets
+        setSelectDiets(initialBuild);
+
+
+        // guardar datos
+        const formData: Filters = {
+            includeIngredients,
+            diet
+        }
+
+        searchRecipes(cleanFormData(formData));
+        
     };
 
     return {
         handleSubmit,
         errorMessage
-    }
+    }; 
 };
 
 export default useFormValidation;
