@@ -6,13 +6,6 @@ export const RecentFound = () => {
         <h2>Recipes Found</h2>
         <div className="cards">
           <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
         </div>
     </section>
   );

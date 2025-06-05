@@ -1,16 +1,11 @@
-import { Cards } from "../Card/Card";
 
+import { RecentCard } from "../Card/RecentCard";
 export const RecentSearch = () => {
   return (
     <section className="spacing">
             <h2>Recent Search</h2>
             <div className="cards">
-              <Cards />
-              <Cards />
-              <Cards />
-              <Cards />
-              <Cards />
-              <Cards />
+              <RecentCard />
             </div>
         </section>
   );
