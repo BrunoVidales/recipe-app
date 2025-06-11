@@ -1,10 +1,11 @@
+import { RecentCard } from "../Cards/RecentCard/RecentCard";
+import './_RecentSearch.scss';
 
-import { RecentCard } from "../Card/RecentCard";
 export const RecentSearch = () => {
   return (
     <section className="spacing">
             <h2>Recent Search</h2>
-            <div className="cards">
+            <div className="recentCards">
               <RecentCard />
             </div>
         </section>

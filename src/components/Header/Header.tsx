@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <header className='header spacing'>
         <div className='header__flex container'>
-            <h1 className='header__heading'>🍴 What Can I Cook?</h1>
+            <h1 className='header__heading'>🍴 What Can I Cook</h1>
             <HeaderIcon isActive={isActive} setIsActive={setIsActive} />
             {mobile ? (
               <>

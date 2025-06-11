@@ -13,7 +13,6 @@ html {
 }
 
 body {
-    width: 100vw;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -21,7 +20,6 @@ body {
     color: v.$primary;
     font-family: v.$mainFont;
     font-size: 1.6rem;
-    overflow-x: hidden;
 }
 
 #root {

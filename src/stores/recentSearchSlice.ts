@@ -4,7 +4,8 @@ import { Recipes } from "../types";
 export type RecentSearchSliceType = {
     recent: Recipes['results'];
     addRecentRecipe: (recipe: Recipes) => void;
-    setRecentFromStorage: (storage: Recipes['results']) => void
+    setRecentFromStorage: (storage: Recipes['results']) => void;
+    handleClearRecent: () => void;
 };
 
 export const recentSearchSlice: StateCreator<RecentSearchSliceType> = (set) => ({
@@ -18,7 +19,7 @@ export const recentSearchSlice: StateCreator<RecentSearchSliceType> = (set) => (
             const exists = copyRecent.find(e => e.id === recipeResult.id);
             if(exists) return { recent: copyRecent } // Si existe una receta, retornamos el mismo estado
 
-            if(copyRecent.length >= 5) copyRecent.pop(); // Verifico que si supera 5 elementos. Cuando supere elimino la primera receta
+            if(copyRecent.length >= 6) copyRecent.pop(); // Verifico que si supera 5 elementos. Cuando supere elimino la primera receta
             copyRecent.unshift(recipeResult); // Agrego al principio la primera receta
             
 
@@ -33,5 +34,8 @@ export const recentSearchSlice: StateCreator<RecentSearchSliceType> = (set) => (
         set({
             recent: storage
         });
+    },
+    handleClearRecent: () => {
+
     }
 })                              

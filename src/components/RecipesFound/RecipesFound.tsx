@@ -1,4 +1,4 @@
-import { Cards } from "../Card/Card";
+import { Cards } from "../Cards/Card/Card";
 
 export const RecentFound = () => {
   return (

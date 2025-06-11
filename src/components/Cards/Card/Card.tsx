@@ -1,4 +1,4 @@
-import { useAppStore } from '../../stores/useAppStore';
+import { useAppStore } from '../../../stores/useAppStore';
 import { Link } from 'react-router-dom';
 import './_Card.scss';
 
