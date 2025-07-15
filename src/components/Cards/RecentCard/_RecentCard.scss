@@ -46,20 +46,15 @@
         top: 1rem;
     }
 
-    &__action {
+    &__trash {
         z-index: 1;
         width: 3.5rem;
         height: 3.5rem;
-    }
-
-    &__action-eye {
-        color: v.$secondary;
-    }
-
-    &__action-trash {
         color: #FF0000;
     }
+
     h3 {
+        color: red;
         z-index: 2;
         display: inline-block;
         color: white;
@@ -68,6 +63,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         transition: transform 0.4s ease;
+        text-align: center;
     }
 
     &:hover h3 {

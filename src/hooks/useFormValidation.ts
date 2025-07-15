@@ -1,6 +1,6 @@
 import { useAppStore } from "../stores/useAppStore";
 import { MouseEvent, useState, Dispatch, SetStateAction } from "react";
-import { DietsOptions, DietsState, Filters } from "../types";
+import { DietsOptions, Filters } from "../types";
 import cleanFormData from "../utils/cleanFormData";
 import { initialBuild } from "./useDietCheckbox";
 
@@ -47,7 +47,7 @@ const useFormValidation = ({ingredients, setIngredients, selectDiets, setSelectD
         }
         
         // Validacion con expresion regular
-        const regex = /^[a-zA-Z\s,]+$/;
+        const regex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s,]+$/;
         const validateText = regex.test(inputText);
         if(!validateText) {
             setErrorMessage({
@@ -103,7 +103,7 @@ const useFormValidation = ({ingredients, setIngredients, selectDiets, setSelectD
         // guardar datos
         const formData: Filters = {
             includeIngredients,
-            diet
+            diet,
         }
 
         searchRecipes(cleanFormData(formData));

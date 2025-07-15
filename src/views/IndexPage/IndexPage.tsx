@@ -1,14 +1,22 @@
 import { Form } from "../../components/Form/Form"
-import { RecentFound } from "../../components/RecipesFound/RecipesFound"
+import { RecipesFound } from "../../components/RecipesFound/RecipesFound"
 import { RecentSearch } from "../../components/RecentSearch/RecentSearch";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useAppStore } from "../../stores/useAppStore";
+
 
 export const IndexPage = () => {
+
+   const setRecipeStorage = useAppStore((state) => state.setRecipeStorage);
+
+  useEffect(() => {
+    setRecipeStorage()
+  }, [])
 
   return (
     <>
       <Form />
-      <RecentFound />
+      <RecipesFound />
       <RecentSearch />
     </>
     

@@ -2,23 +2,25 @@
 @use '../../scss/base/mixins' as m;
 @use 'sass:color';
 
-.nutritionalValues {
-    margin-bottom: 4rem;
-    background-color: v.$bg-white;
-    width: 37rem;
-    height: 18rem;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    flex-shrink: 0;
-    @include m.flex(column, 1.5rem);
-    justify-content: center;
-    align-items: center;
-    @include m.tablet-1 { 
-        justify-content: start;
-        align-items: start;
-    }
+.nutriotional {
     &__info {
+        margin-bottom: 4rem;
+        background-color: v.$bg-white;
+        width: 100%;
+        padding: 5rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        flex-shrink: 0;
+        @include m.flex(column, 1.5rem);
+        justify-content: center;
+        align-items: center;
+        @include m.tablet-2 { 
+            width: 37rem;
+            justify-content: start;
+            align-items: start;
+        }
+    }
+    &__values {
         span {
             font-weight: 700;
         }
@@ -35,9 +37,8 @@
         &:hover {
             background-color: color.scale(v.$secondary, $lightness: -10%);
         }
-    
-        @include m.tablet-1 { 
-            width: 100%;
+        @include m.tablet-2 { 
+            
         }
     }
 }

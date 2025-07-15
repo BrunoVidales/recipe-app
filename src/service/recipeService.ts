@@ -7,14 +7,17 @@ if (!appId) {
   throw new Error("VITE_API_KEY is missing in your environment variables."); //evitar que la clave sea undefined y la request falle silenciosamente.
 }
 
-type ParamsType = Filters & { apiKey: string }
+type ParamsType = Filters & { 
+  apiKey: string;
+};
 
 const getParams = (filters : Filters) : ParamsType =>  {
   return ({
     ...filters,
+    addRecipeInformation: true,
     apiKey: appId
-  })
-}
+  });
+};
 
 
 
@@ -23,6 +26,7 @@ export const recipeSearchFetch = async (formData: Filters) => {
     const params = getParams(formData);
     const { data } = await api.get('complexSearch', {params});
     const result = RecipesAPIResponseSchema.safeParse(data);
+    console.log(result)
     if(result.success) {
       return result.data;
     };
@@ -31,3 +35,4 @@ export const recipeSearchFetch = async (formData: Filters) => {
     console.error(error);
   }
 };
+

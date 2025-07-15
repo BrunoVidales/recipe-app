@@ -1,48 +1,47 @@
 @use '../../../scss/base/variables' as v;
 @use '../../../scss/base/mixins' as m;
-@use 'sass:color';
+
 
 .card {
     background-color: v.$bg-white;
-    width: 34rem;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 1rem;
-    flex-shrink: 0;
-    @include m.flex(column, 0);
-    justify-content: space-between;
-    img {
-        width: 100%;
-        object-position: center;
-        border-radius: 1rem 1rem 0 0;
+
+    &__img {
+        padding: 1rem;
+        img {
+            width: 100%;
+            object-position: center;
+            border-radius: 1rem;
+        }
     }
     &__info {
-        padding: 2rem 1rem;
-        @include m.flex(column, .5rem);
-        
+        margin-top: 2rem;
         h3 {
+            margin-bottom: .5rem;
             text-align: center;
             font-size: 1.6rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
             @include m.tablet-1 { 
                 font-size: 2rem;
             }
         }
     }
+    .swiper-slide-active {
+        transform: scale(1.07);
+        box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+        z-index: 10;
+        height: auto;
+    } 
 
-    &__buttonLink {
-        margin-top: 1rem;
-        align-self: center;
-        background-color: v.$secondary;
-        border-radius: 1rem;
-        width: 25rem;
-        height: 4rem;
-        text-align: center;
-        font-size: 1.4rem;
-        font-weight: 800;
-        transition: background-color .3s;
-        display: grid;
-        place-items: center;
-        &:hover {
-            background-color: color.scale(v.$secondary, $lightness: -10%);
-        }
+    &__heartActive {
+        color: red;
+    }
+    &__heartFalse {
+        color: gray;
     }
 }

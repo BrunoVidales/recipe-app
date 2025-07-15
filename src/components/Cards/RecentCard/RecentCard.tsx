@@ -1,28 +1,26 @@
-import { useEffect } from "react";
-import { EyeIcon, TrashIcon } from '@heroicons/react/24/solid';
+import { TrashIcon } from '@heroicons/react/24/solid';
 import { useAppStore } from "../../../stores/useAppStore";
-import { Link } from "react-router-dom";
-import '../RecentCard/_RecentCard.scss';
+import { useEffect } from 'react';
+import { ViewDetails } from '../ViewDetails/ViewDetails';
 
+import '../RecentCard/_RecentCard.scss';
 
 export const RecentCard = () => {
 
-    const recipes = useAppStore((state) => state.recipes);
+    
     const recent = useAppStore((state) => state.recent);
     const setRecentFromStorage = useAppStore((state) => state.setRecentFromStorage);
-    useEffect(() => {
-        const stored = localStorage.getItem('recent');
-        if(!stored) {
-            return;
-        };
-        setRecentFromStorage(JSON.parse(stored));
-    }, [recipes]);
+    const handleClearRecent = useAppStore((state) => state.handleClearRecent);
 
+    useEffect(() => {
+        setRecentFromStorage()
+    }, [])
+    
 
    
     
     return (
-        <>
+        <>  
             {
                 recent.map((recipe) => (
                         <div
@@ -32,16 +30,13 @@ export const RecentCard = () => {
                         >
                             <div className="recentCard__overlay"></div>
                             <div className="recentCard__actions">
-                                <Link className="recentCard__action recentCard__action-eye" to='/details'>
-                                    <EyeIcon />
-                                </Link>
-                                <button className="recentCard__action recentCard__action-trash">
+                                <ViewDetails text={false} id={recipe.id} />
+                                <button className="recentCard__trash" onClick={() => handleClearRecent(recipe.id)}>
                                     <TrashIcon />
                                 </button>
                             </div>
-                        <h3>{recipe.title}</h3>
+                            <h3>{recipe.title}</h3>
                         </div>
-                   
                 ))
             }
         </>

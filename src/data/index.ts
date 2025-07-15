@@ -1,4 +1,4 @@
-export const searchParams = ['diet', 'includeIngredients'] as const;
+export const searchParams = ['diet', 'includeIngredients', 'addRecipeInformation'] as const;
 
 export const dietsList = [
     'Gluten Free',

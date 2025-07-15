@@ -1,0 +1,21 @@
+.loader__wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.loader__spinner {
+  display: grid;
+  place-items: center;
+  gap: 1.5rem;
+}
+
+.loader__text {
+  color: #fff;
+  font-weight: 700;
+}

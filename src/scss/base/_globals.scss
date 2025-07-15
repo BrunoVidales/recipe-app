@@ -72,25 +72,3 @@ a {
 input:focus-visible {
     outline: none;
 }
-
-.cards {
-    width: 34rem;
-    overflow-x: scroll;
-    scrollbar-width: thin;
-    display: flex;
-    gap: 5rem;
-    margin: 0 auto;
-    padding: 0 0 2rem 0;
-    
-   
-  
-    @include m.tablet-1 { 
-      width: calc(5rem + 68rem);
-    }
-    @include m.desktop-2 { 
-      width: calc(10rem + 102rem);
-    }
-    @include m.tv { 
-      width: calc(15rem + 136rem);
-    }
-}

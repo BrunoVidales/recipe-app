@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { dietsList, searchParams } from "../data";
 import { RecipesAPIResponseSchema } from "../schema/recipes-schema";
+import { RecipeFullDetailsSchema, RecipeInformationAPIResponseSchema, RecipeIngredientsAPIResponseSchema } from "../schema/recipesDetails-schema";
 
 export type DietsState = {
     checked: boolean;
@@ -18,7 +19,13 @@ export type DietsOptions = {
 export type SearchParam = typeof searchParams[number];
 
 export type Filters = {
-    [key in SearchParam]?: string;
+    [key in SearchParam]?: string | boolean;
 };
 
 export type Recipes = z.infer<typeof RecipesAPIResponseSchema>;
+
+export type RecipeInfo = z.infer<typeof RecipeInformationAPIResponseSchema>;
+
+export type RecipeIngredient = z.infer<typeof RecipeIngredientsAPIResponseSchema>;
+
+export type RecipesDetails = z.infer<typeof RecipeFullDetailsSchema>;
